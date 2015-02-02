@@ -19,7 +19,11 @@ define(function(require) {
     },
 
     events: {
+      // Is there another way to write this?
       'click input[type=button]': 'readAndUpdate',
+      // Debounced?
+      // updateOn: 'blur'?
+      'keyup input[type=text]': 'readAndUpdate'
     },
 
     readAndUpdate: function(event) {
@@ -62,7 +66,12 @@ define(function(require) {
       }
 
       this.model.save();
-      this.render();
+      
+      // It still works without this.render()
+      // Check what render does. Seems to inject the context, and refresh the
+      // state? Either backbone or underscore thing.
+      
+      // this.render();
     },
 
     serialize: function() {
