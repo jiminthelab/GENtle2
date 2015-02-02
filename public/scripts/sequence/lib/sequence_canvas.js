@@ -238,7 +238,7 @@ define(function(require) {
       className: 'sequence-canvas-caret',
       blinking: true
     });
-    this.allowedInputChars = ['A', 'T', 'C', 'G'];
+    this.allowedInputChars = options.allowedInputChars || ['A', 'T', 'C', 'G'];
     this.displayDeferred = Q.defer();
     this.copyPasteHandler = new CopyPasteHandler();
 
