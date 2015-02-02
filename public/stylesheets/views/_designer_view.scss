@@ -12,10 +12,12 @@ $__colors: map_get(map_get(map_get(map_get($shared-styles, "sequences"), "lines"
   background-color: transparentize(#ddd, .5);
   position: absolute;
   left: 0;
-  width: 300px;
+  width: 100%;
+  height: 300px;
   bottom: 0;
   top: 0;
   overflow-y: auto;
+  overflow-x: hidden;
 
   .designer-designed-sequence-empty-placeholder {
     border: 3px dashed #ddd;
@@ -36,6 +38,9 @@ $__colors: map_get(map_get(map_get(map_get($shared-styles, "sequences"), "lines"
   }
 
   .designer-designed-sequence-chunk-container {
+    min-width: 150px;
+    margin-left: 125px;
+    float: left;
 
     .designer-designed-sequence-chunk-trash {
       visibility: hidden;
@@ -59,11 +64,11 @@ $__colors: map_get(map_get(map_get(map_get($shared-styles, "sequences"), "lines"
     }  
 
     .designer-designed-sequence-chunk-position {
-      float: left;
       margin-left: -50px;
+      margin-bottom: 10px;
       font-size: 10px;
       color: #005;
-      border-top: 1px solid #888;
+      border-right: 1px solid #888;
       width: 42px;
       text-align: left;
       @include text-overflow();
@@ -86,19 +91,20 @@ $__colors: map_get(map_get(map_get(map_get($shared-styles, "sequences"), "lines"
       .designer-designed-sequence-chunk-droppable {
         position: absolute;
         top: 0;
+        height: 100%;
         left: 0;
-        width: 100%;
-        height: 50%;
+        width: 50%;
+
         &.active {
-          @include linear-gradient(0deg, transparent, rgba(255,255,255,.7));
+          @include linear-gradient(-90deg, transparent, rgba(255,255,255,.7));
           &::before {
             content: "Insert before";
             display: block;
             position: absolute;
             top: 0;
-            margin-top: -25px;
-            left: 50%;
-            margin-left: -50px;
+            margin-top: 10px;
+            left: -100px;
+            margin-left: 0;
             width: 100px;
             background: white;
             color: #888;
@@ -109,14 +115,15 @@ $__colors: map_get(map_get(map_get(map_get($shared-styles, "sequences"), "lines"
         }
       }
       .designer-designed-sequence-chunk-droppable-after {
-        top: auto;
-        bottom: 0;
+        left: 50%;
+        width: 50%;
+
         &.active {
-          @include linear-gradient(transparent, rgba(255,255,255,.7));
+          @include linear-gradient(90deg, transparent, rgba(255,255,255,.7));
           &::before {
             top: auto;
-            bottom: 0;
-            margin-bottom: -25px;
+            left: 100%;
+            margin-left: 0;
             content: "Insert after";
             z-index: 1000;
           }
@@ -152,9 +159,8 @@ $__colors: map_get(map_get(map_get(map_get($shared-styles, "sequences"), "lines"
 .designer-available-sequences {
   position: absolute;
   left: 0;
-  padding-left: 300px;
   right: 0;
-  top: 0;
+  top: 300px;
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -166,6 +172,10 @@ $__colors: map_get(map_get(map_get(map_get($shared-styles, "sequences"), "lines"
 
   .designer-available-sequence {
     position: relative;
+    width: 33%;
+    min-width: 250px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .designer-available-sequence-name {
